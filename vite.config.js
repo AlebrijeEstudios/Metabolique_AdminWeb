@@ -1,8 +1,7 @@
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import path from 'path';
 
-const path = require('path')
-
-export default {
+export default defineConfig({
   root: path.resolve(__dirname, 'src'),
   resolve: {
     alias: {
@@ -10,9 +9,13 @@ export default {
     }
   },
   build: {
-    outDir: '../dist'
+    outDir: '../dist',
+    rollupOptions: {
+      external: ['bootstrap']
+    }
   },
+  assetsInclude: ['**/*.css'],
   server: {
     port: 8080
   }
-}
+});
