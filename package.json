@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "install-bootstrap": "npm install bootstrap",
-    "start": "npm run install-bootstrap && vite",
-    "build": "vite build --emptyOutDir"
+    "start": "vite",
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
