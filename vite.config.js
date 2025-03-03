@@ -1,19 +1,18 @@
-import { resolve } from 'path';
+import { resolve } from 'path'
 
-const path = require('path');
+const path = require('path')
 
 export default {
-  root: path.resolve(__dirname, 'src'), // Tu carpeta principal
+  root: path.resolve(__dirname, 'src'),
   resolve: {
     alias: {
       '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
-    },
+    }
   },
   build: {
-    outDir: '../wwwroot',
-    emptyOutDir: true, 
+    outDir: '../dist'
   },
   server: {
     port: 8080,
-  },
-};
+  }
+}
