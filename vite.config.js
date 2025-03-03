@@ -10,6 +10,12 @@ export default {
     }
   },
   build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        pages: resolve(__dirname, 'pages/Patients.html'),
+      },
+    },
     outDir: '../dist'
   },
   server: {
