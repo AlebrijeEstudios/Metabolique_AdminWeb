@@ -1,4 +1,7 @@
 import { resolve } from 'path'
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const path = require('path')
 
@@ -15,5 +18,10 @@ export default {
   server: {
     port: 8080,
 
-  }
+  },
+  define: {
+    'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL),
+    'process.env.VITE_API_URL_TEST': JSON.stringify(process.env.VITE_API_URL_TEST),
+    'process.env.VITE_API_KEY': JSON.stringify(process.env.VITE_API_KEY)
+  },
 }
