@@ -33,7 +33,7 @@ jobs:
           output_location: "." # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables her
-          VITE_API_KEY: ${{ secrets.VITE_API_KEY}}
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
           VITE_API_URL_TEST : ${{ secrets.VITE_API_URL_TEST }}
           VITE_API_URL : ${{ secrets.VITE_API_URL }}
 
