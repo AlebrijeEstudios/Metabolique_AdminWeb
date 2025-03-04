@@ -4,103 +4,58 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Administrador Metabolique</title>
-    <script type="module" src="../js/main.js"></script>
   </head>
   <body>
+    <script type="module" src="../dom/Patients.js"></script>
     <div id="navbar-placeholder"></div>
-    <script type="module" src="../js/loadHeader.js"></script>
-    <div class="container mt-3 p-6">
+    <nav style="position: fixed; top: 0; width: 100%; background-color: #BAC84C; padding: 10px 0; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000;">
+      <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+          <a href="../pages/Patients.html" style="text-decoration: none;">
+              <div style="height: 40px;">
+                  <img src="../logo/logoMetabolique.png" alt="Logo Metabolique" style="height: 100%; display: block;">
+              </div>
+          </a>
+          <ul style="list-style: none; display: flex; margin: 0; padding: 0;">
+              <li style="margin-left: 15px;">
+                  <a href="../index.html" style="text-decoration: none; color:#e9ecef; font-size: 1rem; padding: 5px 10px; border-radius: 4px; background-color: #007bff">Salir</a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+    <div style="margin: 100px; padding: 20px;">
         <h3>Panel de Administrador</h3>
-        <h2 class="pt-3 pb-5">Pacientes</h2>
-        <div class="search-wrapper">
-          <div class="search-box dark">
-              <i class="fas fa-search search-icon"></i>
-              <input type="text" class="form-control search-input" placeholder="Buscar por nombre...">
-              <button class="btn btn-primary search-button">
-                      Buscar
-                  </button>
+        <h2 style="padding-top: 20px; padding-bottom: 40px;">Pacientes</h2>
+        <div style="margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="text" style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; flex: 1;" placeholder="Buscar por nombre...">
+              <button style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                  Buscar
+              </button>
           </div>
         </div>
-        <div class="table-responsive">
-          <table class="table table-sm table-striped table-bordered text-center">
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: center;">
             <thead>
               <tr>
-                <th style="background-color: #BAC84C">Nombre</th>
-                <th style="background-color: #BAC84C">Email</th>
-                <th style="background-color: #BAC84C">Fecha de Nacimiento</th>
-                <th style="background-color: #BAC84C">Sexo</th>
-                <th style="background-color: #BAC84C">Estatura</th>
-                <th style="background-color: #BAC84C">Peso</th>
-                <th style="background-color: #BAC84C">Protocolo a seguir</th>
-                <th style="background-color: #BAC84C">Accion</th>
+                <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Nombre</th>
+                <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Email</th>
+                <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Fecha de Nacimiento</th>
+                <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Sexo</th>
+                <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Estatura</th>
+                <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Peso</th>
+                <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Protocolo a seguir</th>
+                <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Acción</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td><a href="AllTables.html" style="text-decoration: none; color: inherit;">Jahir Nicolas Lopez Hernandez</a></td>
-                <td>correo1@gmasil.comn</td>
-                <td>n</td>
-                <td>n</td>
-                <td>n</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>
-                  <div class="d-flex justify-content-center gap-3 mt-2">
-                    <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Peter Benjamin Parker</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>
-                  <div class="d-flex justify-content-center gap-3 mt-2">
-                    <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Bruce David Banner</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>Jahir Nicolas Lopez Hernandez</td>
-                <td>
-                  <div class="d-flex justify-content-center gap-3 mt-2">
-                    <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+            <tbody id="patients-table-body"></tbody>
           </table>
         </div>
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
+        <nav style="margin-top: 20px; display: flex; justify-content: center;">
+          <ul id="pagination" style="list-style: none; display: flex; gap: 5px; padding: 0;">
+              <li><a href="#" id="prevPage" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&laquo;&laquo;</a></li>
+              <li><a href="#" id="nextPage" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&raquo;&raquo;</a></li>
           </ul>
-        </nav>
+        </nav>   
       </div>
   </body>
 </html>

@@ -4,33 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador Metabolique</title>
-    <!--script type="module" src="./js/main.js"></script-->
 </head>
 <body>
+    <script type="module" src="./dom/Login.js"></script>
     <div id="navbar-placeholder"></div>
-    <script src="./js/loadHeaderLogin.js"></script>
-    <div class="d-flex justify-content-center" style="padding-top: 170px;">
-        <div class="card shadow-lg w-100" style="max-width: 580px;">
-            <div class="card-body">
-                <div class="text-center">
-                    <h1 class="card-title h3">Administrador</h1>
+    <nav style="position: fixed; top: 0; width: 100%; background-color: #BAC84C; padding: 10px 0; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000;">
+        <div style="display: flex; justify-content: center; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+            <a href="#" style="text-decoration: none;">
+                <div style="height: 40px;">
+                    <img src="../logo/logoMetabolique.png" alt="Logo Metabolique" style="height: 100%; display: block;">
                 </div>
-                <div class="mt-4">
-                    <form action="">
-                        <div class="mb-4">
-                            <label for="username" class="form-label text-muted">Username</label>
-                            <input type="username" class="form-control" id="username" placeholder="Username" required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="password" class="form-label text-muted">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" required>
-                        </div>
-                    </form>
-                    <a href="./pages/Patients.html"><button type="submit" class="btn btn-dark btn-lg">Entrar</button></a>
-                </div>
+            </a>
+        </div>
+    </nav>
+    <div style="display: flex; justify-content: center; padding-top: 170px;">
+        <div style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); width: 100%; max-width: 580px; border: 1px solid #ddd; border-radius: 8px; padding: 20px;">
+            <div style="text-align: center;">
+                <h1 style="font-size: 1.5rem; margin-bottom: 20px;">Administrador</h1>
+            </div>
+            <div style="margin-top: 20px;">
+                <form id="login-form">
+                    <div style="margin-bottom: 20px;">
+                        <label for="username" style="display: block; font-size: 0.9rem; color: #6c757d; margin-bottom: 5px;">Username</label>
+                        <input type="text" id="username" placeholder="Username"  style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label for="password" style="display: block; font-size: 0.9rem; color: #6c757d; margin-bottom: 5px;">Password</label>
+                        <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required >
+                    </div>
+                    <button type="submit" style="width: 100%; padding: 10px; background-color: #343a40; color: white; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer;">Entrar</button>
+                </form>
             </div>
         </div>
     </div>
-    <script type="module" src="./js/main.js"></script>
 </body>
 </html>

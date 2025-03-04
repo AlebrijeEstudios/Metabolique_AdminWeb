@@ -4,303 +4,321 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador Metabolique</title>
-    <script type="module" src="../js/main.js"></script>
 </head>
 <body>
+    <script type="module" src="../dom/AllTables.js"></script>
     <div id="navbar-placeholder"></div>
-    <script src="../js/loadHeader.js"></script>
-    <div class="container mt-3 p-6">
-        <div class="pl-6 d-flex justify-content-center gap-3 mt-2 mb-2">
+    <nav style="position: fixed; top: 0; width: 100%; background-color: #BAC84C; padding: 10px 0; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); z-index: 1000;">
+      <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+          <a href="Patients.html" style="text-decoration: none;">
+              <div style="height: 40px;">
+                  <img src="../logo/logoMetabolique.png" alt="Logo Metabolique" style="height: 100%; display: block;">
+              </div>
+          </a>
+          <ul style="list-style: none; display: flex; margin: 0; padding: 0;">
+              <li style="margin-left: 15px;">
+                <a href="../index.html" style="text-decoration: none; color:#e9ecef; font-size: 1rem; padding: 5px 10px; border-radius: 4px; background-color: #007bff">Salir</a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+    <div style="margin-top: 100px; padding: 20px;">
+        <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
             <a style="text-decoration: none; color: black;">Fecha Inicial</a>
-            <input type="date">
+            <input type="date" style="padding: 5px;">
             <a style="text-decoration: none; color: black;">Fecha Final</a>
-            <input type="date">
-            <input type="submit">
+            <input type="date" style="padding: 5px;">
+            <input type="submit" style="padding: 5px;">
         </div>
-        <a href="Patients.html"><button type="button" class="btn btn-primary btn-lg mb-3">Regresar</button></a>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="alimentacion-tab" data-bs-toggle="tab" data-bs-target="#alimentacion" type="button" role="tab" aria-controls="alimentacion" aria-selected="true">Alimentacion</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="medicamento-tab" data-bs-toggle="tab" data-bs-target="#medicamento" type="button" role="tab" aria-controls="medicamento" aria-selected="false">Medicamentos</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="efectoSecundario-tab" data-bs-toggle="tab" data-bs-target="#efectoSecundario" type="button" role="tab" aria-controls="efectoSecundario" aria-selected="false">Efectos Secundarios</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="ejercicio-tab" data-bs-toggle="tab" data-bs-target="#ejercicio" type="button" role="tab" aria-controls="ejercicio" aria-selected="false">Ejercicios</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="habito-tab" data-bs-toggle="tab" data-bs-target="#habito" type="button" role="tab" aria-controls="habito" aria-selected="false">Habitos</button>
-            </li>
-        </ul>
-        <div class="tab-content mt-3" id="myTabContent">
-            <div class="tab-pane fade show active" id="alimentacion" role="tabpanel" aria-labelledby="alimentacion-tab">
-                <h2 class="mb-5">Alimentacion</h2>
-                <div class="table-responsive">
-                    <table class="table table-sm table-striped table-bordered text-center">
+        <a href="Patients.html">
+            <button type="button" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 20px; margin-left: 100px;">Regresar</button>
+        </a>
+        <ul style="list-style: none; display: flex; justify-content: center; padding: 0; border-bottom: 1px solid #ddd;">
+          <li style="margin: 0 10px;">
+              <button style="background: none; border: none; padding: 10px; cursor: pointer; border-bottom: 2px solid #007bff;">Alimentación</button>
+          </li>
+          <li style="margin: 0 10px;">
+              <button style="background: none; border: none; padding: 10px; cursor: pointer;">Medicamentos</button>
+          </li>
+          <li style="margin: 0 10px;">
+              <button style="background: none; border: none; padding: 10px; cursor: pointer;">Efectos Secundarios</button>
+          </li>
+          <li style="margin: 0 10px;">
+              <button style="background: none; border: none; padding: 10px; cursor: pointer;">Ejercicios</button>
+          </li>
+          <li style="margin: 0 10px;">
+              <button style="background: none; border: none; padding: 10px; cursor: pointer;">Hábitos</button>
+          </li>
+      </ul>
+      <div style="margin-top: 20px;" id="myTabContent">
+          <div style="display: block; opacity: 1;" id="alimentacion" role="tabpanel" aria-labelledby="alimentacion-tab">
+              <h2 style="margin-bottom: 20px;">Alimentación</h2>
+              <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0;">
+                <button id="exportButton" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Exportar Todo</button>
+                <button style="padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Exportar Filtrado</button>
+              </div>
+              <div style="overflow-x: auto;">
+                  <table style="width: 100%; border-collapse: collapse; text-align: center;">
                       <thead>
-                        <tr>
-                          <th style="background-color: #BAC84C">Comida del dia</th>
-                          <th style="background-color: #BAC84C">Fecha</th>
-                          <th style="background-color: #BAC84C">Hora</th>
-                          <th style="background-color: #BAC84C">Nivel de saciedad</th>
-                          <th style="background-color: #BAC84C">Emociones Ligadas</th>
-                          <th style="background-color: #BAC84C">Total de calorias</th>
-                          <th style="background-color: #BAC84C">Foto</th>
-                          <th style="background-color: #BAC84C">Accion</th>
-                        </tr>
+                          <tr>
+                              <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Comida del día</th>
+                              <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Fecha</th>
+                              <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Hora</th>
+                              <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Nivel de saciedad</th>
+                              <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Emociones Ligadas</th>
+                              <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Total de calorías</th>
+                              <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Foto</th>
+                              <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Acción</th>
+                          </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>j</td>
-                          <td>j</td>
-                          <td>j</td>
-                          <td>j</td>
-                          <td>j</td>
-                          <td>j</td>
-                          <td>j</td>
-                          <td>
-                            <div class="d-flex justify-content-center gap-3 mt-2 mb-2">
-                              <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
+                      <tbody id="feedings-table-body"></tbody>
+                  </table>
+                  <nav style="margin-top: 20px; display: flex; justify-content: center;">
+                    <ul id="pagination" style="list-style: none; display: flex; gap: 5px; padding: 0;">
+                        <li><a href="#" id="prevPage" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&laquo;&laquo;</a></li>
+                        <li><a href="#" id="nextPage" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&raquo;&raquo;</a></li>
                     </ul>
-                </nav>
-            </div>
-            <div class="tab-pane fade" id="medicamento" role="tabpanel" aria-labelledby="medicamento-tab">
-                <h2 class="mb-5">Medicamentos</h2>
-                <div class="table-responsive">
-                    <table class="table table-sm table-striped table-bordered text-center">
-                      <thead>
-                        <tr>
-                          <th style="background-color: #BAC84C">Medicamento</th>
-                          <th style="background-color: #BAC84C">Fecha inicial de consumo</th>
-                          <th style="background-color: #BAC84C">Fecha final de consumo</th>
-                          <th style="background-color: #BAC84C">Dosis</th>
-                          <th style="background-color: #BAC84C">Horas de consumo</th>
-                          <th style="background-color: #BAC84C">Accion</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Peter Benjamin Parker</td>
-                          <td>p</td>
-                          <td>p</td>
-                          <td>p</td>
-                          <td>p</td>
-                          <td>
-                            <div class="d-flex justify-content-center gap-3 mt-2 mb-2">
-                              <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
+                  </nav>  
+              </div>
+          </div>
+      </div>
+              <!--nav style="margin-top: 20px; display: flex; justify-content: center;">
+                  <ul style="list-style: none; display: flex; padding: 0; gap: 5px;">
+                      <li>
+                          <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&laquo;</a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
+                      <li>
+                          <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">1</a>
                       </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="tab-pane fade" id="efectoSecundario" role="tabpanel" aria-labelledby="efectoSecundario-tab">
-              <h2 class="mb-5">Efectos Secundarios</h2>
-              <div class="table-responsive">
-                  <table class="table table-sm table-striped table-bordered text-center">
+                      <li>
+                          <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">2</a>
+                      </li>
+                      <li>
+                          <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">3</a>
+                      </li>
+                      <li>
+                          <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&raquo;</a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+          <div style="display: none;" id="medicamento" role="tabpanel" aria-labelledby="medicamento-tab">
+            <h2 style="margin-bottom: 20px;">Medicamentos</h2>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center;">
                     <thead>
-                      <tr>
-                        <th style="background-color: #BAC84C">Hora inicial</th>
-                        <th style="background-color: #BAC84C">Hora final</th>
-                        <th style="background-color: #BAC84C">Descripción</th>
-                        <th style="background-color: #BAC84C">Accion</th>
-                      </tr>
+                        <tr>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Medicamento</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Fecha inicial de consumo</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Fecha final de consumo</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Dosis</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Horas de consumo</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Accion</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>p</td>
-                        <td>p</td>
-                        <td>p</td>
-                        <td>
-                          <div class="d-flex justify-content-center gap-3 mt-2 mb-2">
-                            <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                            <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                          </div>
-                        </td>
-                      </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Peter Benjamin Parker</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">p</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">p</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">p</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">p</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">
+                                <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
+                                    <button style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Editar</button>
+                                    <button style="padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
-                  </table>
-              </div>
-              <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
+                </table>
+            </div>
+            <nav style="margin-top: 20px; display: flex; justify-content: center;">
+                <ul style="list-style: none; display: flex; padding: 0; gap: 5px;">
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&laquo;</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">1</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">2</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">3</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&raquo;</a>
+                    </li>
                 </ul>
             </nav>
+          </div>
+          <div style="display: none;" id="efectoSecundario" role="tabpanel" aria-labelledby="efectoSecundario-tab">
+            <h2 style="margin-bottom: 20px;">Efectos Secundarios</h2>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Hora inicial</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Hora final</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Descripción</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">p</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">p</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">p</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">
+                                <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
+                                    <button style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Editar</button>
+                                    <button style="padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="tab-pane fade" id="ejercicio" role="tabpanel" aria-labelledby="ejercicio-tab">
-                <h2 class="mb-5">Ejercicios</h2>
-                <div class="table-responsive">
-                    <table class="table table-sm table-striped table-bordered text-center">
-                      <thead>
+            <nav style="margin-top: 20px; display: flex; justify-content: center;">
+                <ul style="list-style: none; display: flex; padding: 0; gap: 5px;">
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&laquo;</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">1</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">2</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">3</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+          </div>
+          <div style="display: none;" id="ejercicio" role="tabpanel" aria-labelledby="ejercicio-tab">
+            <h2 style="margin-bottom: 20px;">Ejercicios</h2>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                    <thead>
                         <tr>
-                          <th style="background-color: #BAC84C">Tipo de ejercicio</th>
-                          <th style="background-color: #BAC84C">Intensidad</th>
-                          <th style="background-color: #BAC84C">Minutos dedicados</th>
-                          <th style="background-color: #BAC84C">Accion</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Tipo de ejercicio</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Intensidad</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Minutos dedicados</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Accion</th>
                         </tr>
-                      </thead>
-                      <tbody>
+                    </thead>
+                    <tbody>
                         <tr>
-                          <td>a</td>
-                          <td>a</td>
-                          <td>a</td>
-                          <td>
-                            <div class="d-flex justify-content-center gap-3 mt-2 mb-2">
-                              <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                            </div>
-                          </td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">a</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">a</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">a</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">
+                                <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
+                                    <button style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Editar</button>
+                                    <button style="padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                                </div>
+                            </td>
                         </tr>
-                      </tbody>
-                    </table>
+                    </tbody>
+                </table>
+            </div>
+            <nav style="margin-top: 20px; display: flex; justify-content: center;">
+                <ul style="list-style: none; display: flex; padding: 0; gap: 5px;">
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&laquo;</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">1</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">2</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">3</a>
+                    </li>
+                    <li>
+                        <a href="#" style="text-decoration: none; padding: 5px 10px; border: 1px solid #ddd; border-radius: 5px;">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+          </div>
+          <div style="display: none;" id="habito" role="tabpanel" aria-labelledby="habito-tab">
+            <h3 style="margin-bottom: 20px;">Hidratación</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Cantidad de agua consumida</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">l</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">
+                                <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
+                                    <button style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Editar</button>
+                                    <button style="padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3 style="margin-bottom: 20px;">Tabaquismo</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Cantidad de cigarros fumados</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Emociones predominantes</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">l</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">l</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">
+                                <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
+                                    <button style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Editar</button>
+                                    <button style="padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3 style="margin-bottom: 20px;">Descanso</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Horas de sueño</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Percepción de relajación</th>
+                            <th style="background-color: #BAC84C; padding: 10px; border: 1px solid #ddd;">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">l</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">l</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">
+                                <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
+                                    <button style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Editar</button>
+                                    <button style="padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
               </div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="tab-pane fade" id="habito" role="tabpanel" aria-labelledby="habito-tab">
-                <h3 class="mb-5">Hidratación</h3>
-                <div class="table-responsive">
-                    <table class="table table-sm table-striped table-bordered text-center">
-                      <thead>
-                        <tr>
-                          <th style="background-color: #BAC84C">Cantidad de agua consumida</th>
-                          <th style="background-color: #BAC84C">Accion</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>l</td>
-                          <td>
-                            <div class="d-flex justify-content-center gap-3 mt-2 mb-2">
-                              <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
-                <h3 class="mb-5">Tabaquismo</h3>
-                <div class="table-responsive">
-                    <table class="table table-sm table-striped table-bordered text-center">
-                      <thead>
-                        <tr>
-                          <th style="background-color: #BAC84C">Cantidad de cigarros fumados</th>
-                          <th style="background-color: #BAC84C">Emociones predominantes</th>
-                          <th style="background-color: #BAC84C">Accion</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>l</td>
-                          <td>l</td>
-                          <td>
-                            <div class="d-flex justify-content-center gap-3 mt-2 mb-2">
-                              <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
-                <h3 class="mb-5">Descanso</h3>
-                <div class="table-responsive">
-                    <table class="table table-sm table-striped table-bordered text-center">
-                      <thead>
-                        <tr>
-                          <th style="background-color: #BAC84C">Horas de sueño</th>
-                          <th style="background-color: #BAC84C">Percepción de relajación</th>
-                          <th style="background-color: #BAC84C">Accion</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>l</td>
-                          <td>l</td>
-                          <td>
-                            <div class="d-flex justify-content-center gap-3 mt-2 mb-2">
-                              <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+          </div>
+    </div-->
 </body>
 </html>
