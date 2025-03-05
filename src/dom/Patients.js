@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function fetchPatients(page) {
+    const apiUrlTest = config.VITE_API_URL_TEST;
+    const apiUrl = config.VITE_API_URL;
+    const apiKey = config.VITE_API_KEY;
     const doctorID = localStorage.getItem('doctorID');
     const accessToken = localStorage.getItem('accessToken');
     
