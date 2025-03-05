@@ -17,7 +17,6 @@ export default {
   },
   server: {
     port: 8080,
-
   },
   define: {
     'process.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL),
