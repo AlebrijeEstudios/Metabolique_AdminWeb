@@ -1,8 +1,11 @@
-const apiKey = import.meta.env.VITE_API_KEY;
-const apiUrlTest = import.meta.env.VITE_API_URL_TEST;
-const apiUrl = import.meta.env.VITE_API_URL;
+import { config } from '../config.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
+
+    const apiUrlTest = config.VITE_API_URL_TEST;
+    const apiUrl = config.VITE_API_URL;
+    const apiKey = config.VITE_API_KEY;
+
     const doctorID = localStorage.getItem('doctorID');
     const accessToken = localStorage.getItem('accessToken');
     let currentPage = 1; 
@@ -22,7 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         const patients = await response.json();
-        console.log("Pacientes:", patients.account);
 
         renderPatientsTable(patients.account);
 
@@ -66,7 +68,7 @@ async function fetchPatients(page) {
         }
 
         const patients = await response.json();
-        console.log("Pacientes:", patients.account);
+    
         renderPatientsTable(patients.account);
 
         const logoutButton = document.getElementById("logoutButton");

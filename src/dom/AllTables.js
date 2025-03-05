@@ -1,8 +1,11 @@
-const apiKey = import.meta.env.VITE_API_KEY;
-const apiUrlTest = import.meta.env.VITE_API_URL_TEST;
-const apiUrl = import.meta.env.VITE_API_URL;
+import { config } from '../config.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
+
+    const apiUrlTest = config.VITE_API_URL_TEST;
+    const apiUrl = config.VITE_API_URL;
+    const apiKey = config.VITE_API_KEY;
+
     const urlParams = new URLSearchParams(window.location.search);
     const accountID = urlParams.get('accountID');
     localStorage.setItem("accountID", accountID);
@@ -24,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         const feedingsUser = await response.json();
-        console.log("Alimentacion:", feedingsUser.feedings);
 
         renderFeedingTable(feedingsUser.feedings);
 
@@ -68,6 +70,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function fetchFeedings(page) {
+    const apiUrlTest = config.VITE_API_URL_TEST;
+    const apiUrl = config.VITE_API_URL;
+    const apiKey = config.VITE_API_KEY;
     const accountID = localStorage.getItem('accountID');
     const accessToken = localStorage.getItem('accessToken');
     
@@ -86,7 +91,6 @@ async function fetchFeedings(page) {
         }
 
         const feedingsUser = await response.json();
-        console.log("Alimentacion:", feedingsUser.feedings);
         renderFeedingTable(feedingsUser.feedings);
     } catch (error) {
         console.error("Error:", error);
@@ -126,6 +130,9 @@ function renderFeedingTable(feedings) {
 
 async function exportCSV() {
 
+    const apiUrlTest = config.VITE_API_URL_TEST;
+    const apiUrl = config.VITE_API_URL;
+    const apiKey = config.VITE_API_KEY;
     const accountID = localStorage.getItem('accountID');
     const accessToken = localStorage.getItem('accessToken');
 

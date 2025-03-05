@@ -1,8 +1,10 @@
-const apiKey = import.meta.env.VITE_API_KEY;
-const apiUrlTest = import.meta.env.VITE_API_URL_TEST;
-const apiUrl = import.meta.env.VITE_API_URL;
+import { config } from '../config.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    const apiUrlTest = config.VITE_API_URL_TEST;
+    const apiUrl = config.VITE_API_URL;
+    const apiKey = config.VITE_API_KEY;
 
     const loginForm = document.getElementById("login-form");
 
@@ -18,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const loginData = { username, password };
-        console.log("Datos enviados:", loginData);
 
         try { 
             const response = await fetch(`${apiUrlTest}/api/admin/auth`, {
