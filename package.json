@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "vite",
-    "build": "vite build"
+    "start": "vite"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +15,6 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
     "dotenv": "^16.4.7"
   }
 }
